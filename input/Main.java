@@ -6,7 +6,7 @@ public class Main{
       Point c=new Point(2, 1);
       Maison m1=new Maison(null);
       m1.position=a;
-    //  System.out.println(m1.is_coupe);
+   
       Maison m2=new Maison(null);
       m2.position=b;
 
