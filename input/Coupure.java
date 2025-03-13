@@ -6,7 +6,6 @@ public class Coupure{
         Coupure(Secteur s,Date db,Maison[] lm,int taille_lm){
             this.s=new Secteur(null);
             this.s=s;
-            this.date_deb=new Date(0,0,0,0,0,0);
             this.date_deb=db;
             this.date_fin=null  ;
             

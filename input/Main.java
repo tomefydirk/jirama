@@ -26,21 +26,23 @@ public class Main{
 
       Secteur[] ls1=new Secteur[10];
       ls1[0]=s2;
-   //   System.out.println(a.equal(b)); 
+
       Jirama my_Jirama=new Jirama();
     
         my_Jirama.lm[my_Jirama.taille_lm()]=m1;
         my_Jirama.lm[my_Jirama.taille_lm()]=m2;
         my_Jirama.lm[my_Jirama.taille_lm()]=m3;
         
- //       System.out.println(my_Jirama.taille_lm());
-    
-      my_Jirama.Couper(ls,new Date(0, 0, 0, 0, 0, 0));
-      my_Jirama.Retablir(ls,new Date(0, 0, 0, 0, 0, 0));
 
+    
+      my_Jirama.Couper(ls,new Date(1, 12, 2024, 1, 30, 0));
+      my_Jirama.Retablir(ls,new Date(2, 12, 2024, 0, 0, 0));
+
+      Date duree=new Date(1, 0, 0, 1, 30, 0).duree(new Date(2, 0, 0, 0, 0, 0));
+      System.out.println(duree.into_string_h_m_s());
       System.out.println(m3.is_coupe);
       my_Jirama.lc[0].afficher();
-     // Point c=s1.min_p();
+   
     
     }
 
