@@ -61,4 +61,11 @@ public class Jirama{
        this.chek_maison_false(ls);
        this.push_date_fin_coupure(ls,fin);
     }
+    void afficher_lc(){
+      for(int i=0;i<this.taille_lc();i++){
+          System.out.println("|----------Coupure "+(i+1)+"-----------|");
+          this.lc[i].afficher();
+          System.out.println("<----------------------------------------------------------->\n");
+      }
+    }
 }

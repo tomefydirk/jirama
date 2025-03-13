@@ -17,7 +17,7 @@ public class Coupure{
         }
         void afficher(){
             System.out.println("\n{");
-            System.out.println(this.s.nom);
+            System.out.println("Secteur concerné: "+this.s.nom);
             System.out.print("date debut---> ");
             this.date_deb.afficher();
            
