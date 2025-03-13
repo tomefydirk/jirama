@@ -14,7 +14,10 @@ public class Date{
         this.min=min;
         this.s=s;
     }
+    String into_string(){
+        return this.j+"/"+this.m+"/"+this.a+"  "+" "+this.h +"h-"+this.min+"m-"+this.s+"s";
+    }
     void afficher(){
-        System.out.println(this.j+"/"+this.m+"/"+this.a+"  "+" "+this.h +"h-"+this.min+"m-"+this.s+"s");
+        System.out.println(this.into_string());
     }
 }

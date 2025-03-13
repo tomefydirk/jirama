@@ -4,7 +4,7 @@ public class Coupure{
         Date date_fin;
 
         Coupure(Secteur s,Date db,Maison[] lm,int taille_lm){
-            this.s=new Secteur();
+            this.s=new Secteur(null);
             this.s=s;
             this.date_deb=new Date(0,0,0,0,0,0);
             this.date_deb=db;
@@ -18,9 +18,10 @@ public class Coupure{
         }
         void afficher(){
             System.out.println("\n{");
+            System.out.println(this.s.nom);
             System.out.print("date debut---> ");
             this.date_deb.afficher();
-
+           
             System.out.print("date fin---> ");
             this.date_fin.afficher();
             System.out.println("}\n");

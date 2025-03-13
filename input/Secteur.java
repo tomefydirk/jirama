@@ -1,9 +1,16 @@
 public class Secteur{
     Point[] form;
-    
-    Secteur(){
+    String nom;
+    Secteur(String nom){
         this.form=new Point[4];
+        this.nom=nom;
     }     
+    void init_form(Point p1,Point p2,Point p3,Point p4){
+        this.form[0]=p1;
+        this.form[1]=p2;
+        this.form[2]=p3;
+        this.form[3]=p4;
+    }
      Point min_p(){
         Point minimum=new Point(0,0);
         minimum=this.form[0];
