@@ -4,12 +4,18 @@ public class Maison{
     boolean is_coupe ;
     String nom;
     int indice_personne;
+    
     Maison(String nom){
     this.qui_vive=new Personne[100];
     this.position=new Point(0,0);
     this.is_coupe=false;
     this.indice_personne=0;
     this.nom=nom;
+    }
+
+    // impl --->#[Debug]
+    void afficher(){
+        System.out.println(this.nom+" : "+this.is_coupe);
     }
    
     

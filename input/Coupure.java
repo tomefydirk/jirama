@@ -15,14 +15,25 @@ public class Coupure{
             }
  
         }
-        void afficher(){
+        Date Duree_coup(){
+            Date retour=new Date(0,0,0,0,0,0);
+            retour=this.date_deb.duree(this.date_fin);
+            return retour;
+        }
+        // impl --->#[Debug]
+        void afficher(Maison[] lm,int taille){
             System.out.println("\n{");
-            System.out.println("Secteur concerné: "+this.s.nom);
+            this.s.afficher_maison_sec(lm,taille);
+            System.out.println("\n");
             System.out.print("date debut---> ");
             this.date_deb.afficher();
            
             System.out.print("date fin---> ");
-            this.date_fin.afficher();
+            if(this.date_fin==null){
+            System.out.println("nothing");
+            }else{
+                this.date_fin.afficher();
+            }
             System.out.println("}\n");
         }
 }

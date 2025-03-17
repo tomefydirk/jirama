@@ -5,6 +5,7 @@ public class Secteur{
         this.form=new Point[4];
         this.nom=nom;
     }     
+   
     void init_form(Point p1,Point p2,Point p3,Point p4){
         this.form[0]=p1;
         this.form[1]=p2;
@@ -32,13 +33,13 @@ public class Secteur{
         return maximum;
     }
  
-   
     Point[] get_borne(){
       Point[] retour=new Point[2];
       retour[0]=this.min_p();
       retour[1]=this.max_p();
       return retour;
     }
+
     Maison [] filtrer_maison(Maison[] lm,int taille){
      Maison [] retour=new Maison[100];
      Point [] born=this.get_borne();
@@ -51,16 +52,7 @@ public class Secteur{
              }
         return retour;
     }
-    int taille_filtrer_maison(Maison[] lm,int taille){
-        Point [] born=this.get_borne();
-       int taille_f=0;
-     for(int i=0;i<taille;i++){
-                 if(lm[i].position.appartient_sec(born[0],born[1])==true){
-                        taille_f+=1;
-                 }
-        }
-               return taille_f;     
-    }
+
     boolean equal(Secteur autre){
         return autre.min_p().equal(this.min_p()) && autre.max_p().equal(this.max_p());
         
@@ -76,13 +68,14 @@ public class Secteur{
         }
         return retour;
     }
-    int taille_filtrer_coupure(Coupure[] lc,int taille){
-        int index=0;
-        for(int i=0;i<taille;i++){
-            if(lc[i].s.equal(this)){
-                index+=1;
+
+    // impl --->#[Debug]
+    void afficher_maison_sec(Maison[] lm,int taille){
+        System.out.println("nom du secteur: "+this.nom);
+        Maison[] lm_filtre=this.filtrer_maison(lm, taille);
+            for(int i=0;lm_filtre[i]!=null;i++){
+                lm_filtre[i].afficher();
             }
-        }
-        return index;
     }
+   
 }

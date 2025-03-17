@@ -14,12 +14,6 @@ public class Date{
         this.min=min;
         this.s=s;
     }
-    String into_string(){
-        return "j: "+this.j+" / m:"+this.m+" / a: "+this.a+"  "+" "+this.h +"h-"+this.min+"m-"+this.s+"s";
-    }
-    String into_string_h_m_s(){
-        return this.h +"h-"+this.min+"m-"+this.s+"s";
-    }
     int  into_sec(){
         return this.j*86400+3600*this.h+60*this.min+this.s;
     }
@@ -40,7 +34,18 @@ public class Date{
         int diff=limit.into_sec()-this.into_sec();
         return from_sec(diff);
     }
+
+    // impl --->#[Debug]
+    String into_string(){
+        return "Jour: "+this.j+" / m:"+this.m+" / a: "+this.a+"  "+" "+this.h +"h-"+this.min+"m-"+this.s+"s";
+    }
+    String into_string_h_m_s(){
+        return this.h +"h-"+this.min+"m-"+this.s+"s";
+    }
     void afficher(){
         System.out.println(this.into_string());
+    }
+    void afficher_h_m_s(){
+        System.out.println(this.into_string_h_m_s());
     }
 }
