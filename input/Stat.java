@@ -7,6 +7,7 @@ public class Stat{
     Date max;
     Date moyenne;
     Secteur s;
+    
     public Date first_into_list(Secteur s,Coupure[] lc){
         Date first=new Date(0,0,0,0,0,0);
         for(int i=0;lc[i]!=null;i++){
@@ -17,6 +18,7 @@ public class Stat{
         }
         return first;
     }
+
     public Date chercher_min(Secteur s,Coupure[] lc){
         Date min=first_into_list(s, lc);
         for(int i=0;lc[i]!=null;i++){
