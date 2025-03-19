@@ -1,27 +1,28 @@
 package vivant;
 import geo.*;
-import jirama.*;
-import vivant.*; 
+import jirama.*; 
 public class Maison{
-    Personne[] qui_vive;
-    Point position;
-    boolean is_coupe ;
-    String nom;
+    private Personne[] qui_vive;
+    private Point position;
+    private boolean is_coupe ;
+    private String nom;
 
-    
+    //impl --->#[constructor] {
     public Maison(String nom){
     this.qui_vive=new Personne[100];
     this.position=new Point(0,0);
     this.is_coupe=false;
     this.nom=nom;
     }
+    // }
 
-    // impl --->#[Debug]
+    // impl --->#[Debug] {
     public void afficher(){
         System.out.println(this.nom+" : "+this.is_coupe);
     }
-   
-     //impl #[get_field]
+    // }
+
+    //impl --->#[get_field] {
     public Personne[] get_qui_vive(){
         return this.qui_vive;
     }
@@ -34,8 +35,9 @@ public class Maison{
     public String get_nom(){
         return this.nom;
     }
+    // }
 
-    //impl #[mut_field]
+    //impl --->#[mut_field]{
     public void set_qui_vive(Personne[] autre){
         this.qui_vive=autre;
     }
@@ -48,8 +50,9 @@ public class Maison{
     public void set_nom(String nom){
         this.nom=nom;
     }
-  
-     //impl --> #[inserable] {
+    //}
+
+    //impl --> #[inserable] {
         public void insert_into(Maison[] ld){
             int i=0;
             while (true) {
@@ -63,8 +66,7 @@ public class Maison{
     
         public void replace_into(Maison[] ld,int index){
             ld[index]=this;
-        }
-        
-        // }
+        }        
+    // }
 }
 

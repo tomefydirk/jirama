@@ -3,12 +3,15 @@ import geo.*;
 import jirama.*;
 import vivant.*; 
 public class Secteur{
-    Point[] form;
-    String nom;
+    private Point[] form;
+    private String nom;
+
+    //impl ---> #[constructor] {
     public Secteur(String nom){
         this.form=new Point[4];
         this.nom=nom;
     }     
+    // }
    
     public void init_form(Point p1,Point p2,Point p3,Point p4){
         this.form[0]=p1;
@@ -20,7 +23,7 @@ public class Secteur{
         Point minimum=new Point(0,0);
         minimum=this.form[0];
         for(int i=0;i<4;i++){
-            if(minimum.x>=this.form[i].x && minimum.y>=this.form[i].y){
+            if(minimum.get_x()>=this.form[i].get_x() && minimum.get_y()>=this.form[i].get_y()){
                 minimum=this.form[i];
             }
         }
@@ -30,7 +33,7 @@ public class Secteur{
         Point maximum=new Point(0,0);
         maximum=this.form[0];
         for(int i=0;i<4;i++){
-            if(maximum.x<=this.form[i].x && maximum.y<=this.form[i].y){
+            if(maximum.get_x()<=this.form[i].get_x() && maximum.get_y()<=this.form[i].get_y()){
                 maximum=this.form[i];
             }
         }
@@ -44,7 +47,15 @@ public class Secteur{
       return retour;
     }
 
-    public Maison [] filtrer_maison(Maison[] lm,int taille){
+    //impl -->#[PartialEq] {
+    public boolean equal(Secteur autre){
+        return autre.min_p().equal(this.min_p()) && autre.max_p().equal(this.max_p());
+        
+    }
+    // }
+
+    //impl -->#[filter]{
+   public Maison [] filtrer_maison(Maison[] lm,int taille){
      Maison [] retour=new Maison[100];
      Point [] born=this.get_borne();
      int index=0;
@@ -55,12 +66,6 @@ public class Secteur{
                  }
              }
         return retour;
-    }
-
-    //impl -->#[PartialEq]
-    public boolean equal(Secteur autre){
-        return autre.min_p().equal(this.min_p()) && autre.max_p().equal(this.max_p());
-        
     }
 
     public Coupure[] filtrer_coupure(Coupure[] lc,int taille){
@@ -74,8 +79,9 @@ public class Secteur{
         }
         return retour;
     }
-
-    // impl --->#[Debug]
+    // }
+    
+    // impl --->#[Debug] {
     public void afficher_maison_sec(Maison[] lm,int taille){
         System.out.println("nom du secteur: "+this.nom);
         Maison[] lm_filtre=this.filtrer_maison(lm, taille);
@@ -83,24 +89,29 @@ public class Secteur{
                 lm_filtre[i].afficher();
             }
     }
+    public void afficher(){
+        System.out.println(this.nom);
+    }
+    // }
 
-    //impl ---> #[get_field]
+    //impl ---> #[get_field] {
     public String get_nom(){
         return this.nom;
     }
     public Point[] get_form(){
         return this.form;
     }
+    // }
 
-     //impl ---> #[mut_field]
+     //impl ---> #[mut_field] {
     public void set_nom(String nom){
         this.nom=nom;
     }
     public void set_form(Point[] form){
         this.form=form;
     }
-
-     //impl --> #[inserable] {
+    // }
+    //impl --> #[inserable] {
         public void insert_into(Secteur[] ld){
             int i=0;
             while (true) {
@@ -116,5 +127,5 @@ public class Secteur{
             ld[index]=this;
         }
         
-        // }
+    // }
 }

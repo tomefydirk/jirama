@@ -8,18 +8,19 @@ public class Jirama{
     Coupure[] lc;
     Stat []j_stat;
     Pays p;
-    
+    //impl -->#[constructor]{
     public Jirama(){
       this.lm=new Maison[100];
       this.lc=new Coupure[100];
       this.j_stat=new Stat[100];
     }
+    // }
 
-    void panicked_sec_size(int i){
-        System.out.println("Le secteur N° "+i+" est plus grand que le pays");
+    void panicked_sec_size(String nom){
+        System.out.println("Le secteur "+nom+" est plus grand que le pays");
     }    
 
-    // impl --->#[Sized]
+    // impl --->#[Sized] {
     public int taille_lm(){
         int i=0;
       while(true){
@@ -32,7 +33,6 @@ public class Jirama{
 
     }
 
-     // impl --->#[Sized]
      public int taille_lc(){
         int i=0;
       while(true){
@@ -44,7 +44,7 @@ public class Jirama{
       return i;
         
     }
-      // impl --->#[Sized]
+   
     public int taille_stat(){
       int i=0;
       while(true){
@@ -55,6 +55,8 @@ public class Jirama{
       }
       return i;
     }
+    // }
+
     public void rajouter_stat(Secteur s){
       this.j_stat[this.taille_stat()]=new Stat(s, this.lc);
     }
@@ -67,7 +69,7 @@ public class Jirama{
                        my_tab[j].set_is_coupe(false); 
                 }
          } else{
-          panicked_sec_size(i);
+          panicked_sec_size(ls[i].get_nom());
          }
          }
              
@@ -78,13 +80,15 @@ public class Jirama{
             if(this.p.indicator_in(ls[i])){ // 1°)
 
                Coupure[] my_tab=ls[i].filtrer_coupure(this.lc,t);
+            
                 for(int j=0;my_tab[j]!=null;j++){
-                      if(my_tab[j].date_fin==null){
-                        my_tab[j].date_fin=fin; 
+                      if(my_tab[j].get_Date_fin()==null){
+                        my_tab[j].set_Date_fin(fin); 
                       }
             }
+         
          }else{
-          panicked_sec_size(i);
+          panicked_sec_size(ls[i].get_nom());
          }
          } 
     }
@@ -93,7 +97,7 @@ public class Jirama{
         if(this.p.indicator_in(ls[i])){ // 1°)
             this.lc[this.taille_lc()]=new Coupure(ls[i],date_deb,this.lm,this.taille_lm());     
         }else{
-          panicked_sec_size(i);
+          panicked_sec_size(ls[i].get_nom());
         }
        }
      
@@ -102,7 +106,7 @@ public class Jirama{
        this.chek_maison_false(ls);
        this.push_date_fin_coupure(ls,fin);
     }
-    // impl --->#[Debug]
+    // impl --->#[Debug] {
     public void afficher_lc(){
         int t=this.taille_lc();
       for(int i=0;i<t;i++){
@@ -117,14 +121,14 @@ public class Jirama{
       }
     }
 
-     // impl --->#[Debug]
     public void afficher_lm(){
       for(int i=0;this.lm[i]!=null;i++){
             this.lm[i].afficher();
       }
     }
-
-    //impl -->#[get_field]
+    // }
+    
+    //impl -->#[get_field] {
     public Maison[] get_lm(){
       return this.lm;
     }
@@ -134,8 +138,12 @@ public class Jirama{
     public Stat[] get_Stats(){
        return this.j_stat;
     }
+    public Pays get_pays(){
+      return this.p;
+    }
+    // }
 
-    //impl ---> #[mut_field]
+    //impl ---> #[mut_field] {
     public void set_lm(Maison[] lm){
       this.lm=lm;
     }
@@ -145,11 +153,14 @@ public class Jirama{
     public void set_Stats(Stat[] st){
       this.j_stat=st;
     }
+    public void set_pays(Pays p){
+      this.p=p;
+    }
+    // }
 
-    /*--------- impl --> #[mut_field] for slice[]--------*/
+    /* impl --> #[mut_slice_field) { */
     
     //impl pushable{
-
     public void push_lm(Maison value){
       this.lm[taille_lm()]=value;
     }
@@ -160,7 +171,6 @@ public class Jirama{
     public void push_j_stat(Stat value){
       this.j_stat[taille_stat()]=value;
     }
-
     //}
 
     //impl mutable index{
@@ -173,12 +183,9 @@ public class Jirama{
     public void replace_stat(Stat value,int index){
       this.j_stat[index]=value;
     }
-
-
-
     //}
 
-    /*--------------------impl end -----------------------*/
+    /* } */
 
-    // 1°) condition miteny hoé ao anatin'ilay pays sa tsia ilaay secteur
+    // 1°) condition miteny hoé ao anatin'ilay pays ilay secteur
 }
