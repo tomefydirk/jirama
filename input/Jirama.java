@@ -4,10 +4,10 @@ import jirama.*;
 import vivant.*; 
 
 public class Jirama{
-    Maison[] lm;
-    Coupure[] lc;
-    Stat []j_stat;
-    Pays p;
+   private  Maison[] lm;
+   private  Coupure[] lc;
+   private  Stat []j_stat;
+   private  Pays p;
     //impl -->#[constructor]{
     public Jirama(){
       this.lm=new Maison[100];

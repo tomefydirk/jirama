@@ -1,13 +1,16 @@
 package jirama; 
 import geo.*;
 import jirama.*;
-import vivant.*; 
+import vivant.*;
+
+//import my own std::collection :
+import collection.*;
 
 public class Stat{
-    Date min;
-    Date max;
-    Date moyenne;
-    Secteur s;
+    private Date min;
+    private Date max;
+    private Date moyenne;
+    private Secteur s;
     // {
     public Date first_into_list(Secteur s,Coupure[] lc){
         Date first=new Date(0,0,0,0,0,0);
@@ -126,29 +129,23 @@ public class Stat{
     }
     // }
 
-    // identification{
-    
 
-    //}
-
-    //  {
+    //  specification{
     public Secteur min_min(Stat[] ls){
         My_hashmap[] tab=new My_hashmap[100];
         insert_min_into_Hashmap(tab,ls);
-        My_hashmap min=min_tabVHash(tab);
-        return min.get_s();
+        return min_tabVHash(tab).get_s();
+
     }
     public Secteur min_max(Stat[] ls){
          My_hashmap[] tab=new My_hashmap[100];
         insert_max_into_Hashmap(tab,ls);
-        My_hashmap min=min_tabVHash(tab);
-        return min.get_s();
+         return min_tabVHash(tab).get_s();
     }
     public Secteur min_moyenne(Stat[] ls){
         My_hashmap[] tab=new My_hashmap[100];
         insert_moyenne_into_Hashmap(tab,ls);
-        My_hashmap min=min_tabVHash(tab);
-        return min.get_s();
+          return min_tabVHash(tab).get_s();
     }
 
     // } 

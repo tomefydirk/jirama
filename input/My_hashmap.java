@@ -1,4 +1,4 @@
-package jirama; 
+package collection; 
 import geo.*;
 import jirama.*;
 import vivant.*; 

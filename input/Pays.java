@@ -1,8 +1,8 @@
 package geo;
 import geo.*;
 public class Pays{ 
-    String nom;
-    Point[] extremite;
+    private String nom;
+    private Point[] extremite;
 
     //impl --->#[constructor]{
     public Pays(String nom){
