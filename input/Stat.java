@@ -11,7 +11,7 @@ public class Stat{
     private Date max;
     private Date moyenne;
     private Secteur s;
-    // {
+    // fonction secondaire to find : min,max,moyenne{
     public Date first_into_list(Secteur s,Coupure[] lc){
         Date first=new Date(0,0,0,0,0,0);
         for(int i=0;lc[i]!=null;i++){
@@ -93,7 +93,10 @@ public class Stat{
      }
      // }
 
-     //My private functions about Hashmap[]-->{
+
+    //{
+
+     //My public  function about Hashmap[]-->{
      My_hashmap min_tabVHash(My_hashmap [] tab){
         My_hashmap min=tab[0];
         if(tab==null){
@@ -148,8 +151,9 @@ public class Stat{
           return min_tabVHash(tab).get_s();
     }
 
-    // } 
-    
+    // }
+     
+    // }
 
    //impl --> #[inserable] {
     public void insert_into(Stat[] ld){
