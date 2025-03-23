@@ -19,7 +19,10 @@ public class Coupure{
             }
             Maison[] my_list=s.filtrer_maison(lm,taille_lm);
             for(int i=0;my_list[i]!=null;i++){
-                   my_list[i].set_is_coupe(true);       
+                if(my_list[i].coupable()){
+                    my_list[i].set_is_coupe(true);    
+                }
+   
             }
  
     }

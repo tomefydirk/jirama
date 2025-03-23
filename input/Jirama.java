@@ -16,8 +16,8 @@ public class Jirama{
     }
     // }
 
-    void panicked_sec_size(String nom){
-        System.out.println("Le secteur "+nom+" est plus grand que le pays");
+    void panicked_sec_size(String nom,String pays){
+        System.out.println("Le secteur "+nom+" ne peut pas entrer dans le pays: "+pays);
     }    
 
     // impl --->#[Sized] {
@@ -66,10 +66,12 @@ public class Jirama{
          if( this.p.indicator_in(ls[i])){ // 1°)
              Maison[] my_tab=ls[i].filtrer_maison(this.lm,t);
                 for(int j=0;my_tab[j]!=null;j++){
-                       my_tab[j].set_is_coupe(false); 
-                }
+                 
+                    my_tab[j].set_is_coupe(false); 
+                  
+                                       }
          } else{
-          panicked_sec_size(ls[i].get_nom());
+          panicked_sec_size(ls[i].get_nom(),this.p.get_nom());
          }
          }
              
@@ -88,7 +90,7 @@ public class Jirama{
             }
          
          }else{
-          panicked_sec_size(ls[i].get_nom());
+          panicked_sec_size(ls[i].get_nom(),this.p.get_nom());
          }
          } 
     }
@@ -97,7 +99,7 @@ public class Jirama{
         if(this.p.indicator_in(ls[i])){ // 1°)
             this.lc[this.taille_lc()]=new Coupure(ls[i],date_deb,this.lm,this.taille_lm());     
         }else{
-          panicked_sec_size(ls[i].get_nom());
+          panicked_sec_size(ls[i].get_nom(),this.p.get_nom());
         }
        }
      

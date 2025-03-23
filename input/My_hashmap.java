@@ -21,7 +21,18 @@ public class My_hashmap{
         }
         tab[i]=this;
      }
-
+    public My_hashmap min_tabVHash(My_hashmap [] tab){
+        My_hashmap min=tab[0];
+        if(tab==null){
+            System.out.println("tab est vide { class:Stat && function:min_tab }");
+        }
+        for(int i=0;tab[i]!=null;i++){
+            if(min.get_duration()>=tab[i].get_duration()){
+                min=tab[i];
+            }
+        }
+        return min;
+     }
      //impl --->#[get_field]{
     public int get_duration(){
         return this.duration;

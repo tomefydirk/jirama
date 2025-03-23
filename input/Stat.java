@@ -11,6 +11,7 @@ public class Stat{
     private Date max;
     private Date moyenne;
     private Secteur s;
+
     // fonction secondaire to find : min,max,moyenne{
     public Date first_into_list(Secteur s,Coupure[] lc){
         Date first=new Date(0,0,0,0,0,0);
@@ -91,27 +92,20 @@ public class Stat{
         System.out.println("max--> "+this.max.into_string());
         System.out.println("moyenne--> "+this.moyenne.into_string()+"\n");
      }
+     public void afficher_min_stat(Stat[] LST){
+        System.out.print("Min Min : ");
+        min_min(LST).afficher();
+        System.out.print("Min Max : ");
+        min_max(LST).afficher();
+        System.out.print("Min Moyenne : ");
+        min_moyenne(LST).afficher();
+     }
      // }
 
 
     //{
 
-     //My public  function about Hashmap[]-->{
-     My_hashmap min_tabVHash(My_hashmap [] tab){
-        My_hashmap min=tab[0];
-        if(tab==null){
-            System.out.println("tab est vide { class:Stat && function:min_tab }");
-        }
-        for(int i=0;tab[i]!=null;i++){
-            if(min.get_duration()>=tab[i].get_duration()){
-                min=tab[i];
-            }
-        }
-        return min;
-     }
-     // -->}
-
-    // inseration{
+  
     void insert_moyenne_into_Hashmap(My_hashmap[] tab,Stat[]list_stat){
         for(int i=0;list_stat[i]!=null;i++){
             My_hashmap h=new My_hashmap(list_stat[i].moyenne.into_sec(),list_stat[i].s);
@@ -137,18 +131,18 @@ public class Stat{
     public Secteur min_min(Stat[] ls){
         My_hashmap[] tab=new My_hashmap[100];
         insert_min_into_Hashmap(tab,ls);
-        return min_tabVHash(tab).get_s();
+        return tab[0].min_tabVHash(tab).get_s();
 
     }
     public Secteur min_max(Stat[] ls){
          My_hashmap[] tab=new My_hashmap[100];
         insert_max_into_Hashmap(tab,ls);
-         return min_tabVHash(tab).get_s();
+         return tab[0].min_tabVHash(tab).get_s();
     }
     public Secteur min_moyenne(Stat[] ls){
         My_hashmap[] tab=new My_hashmap[100];
         insert_moyenne_into_Hashmap(tab,ls);
-          return min_tabVHash(tab).get_s();
+          return tab[0].min_tabVHash(tab).get_s();
     }
 
     // }

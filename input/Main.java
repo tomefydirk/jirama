@@ -83,21 +83,21 @@ public class Main{
       my_Jirama.push_lm(m9);
 
     my_Jirama.set_pays(new Pays("Mada"));
-    my_Jirama.get_pays().init_form(new Point(0,0),new Point(0,100),new Point(100,100),new Point(100,0));
+    my_Jirama.get_pays().init_form(new Point(0, 100),new Point(100, 0),new Point(100, 100),new Point(0, 0));
 
        my_Jirama.Couper(C1,new Date(13, 3, 2025, 5, 30, 0));
-      my_Jirama.Retablir(R1,new Date(13, 3, 2025, 12, 0, 00));  
+     //my_Jirama.Retablir(R1,new Date(13, 3, 2025, 12, 0, 00));  
      
 
         my_Jirama.Couper(C2,new Date(13, 3, 2025, 13, 00, 0));
-       my_Jirama.Retablir(R2,new Date(13, 3, 2025, 14, 0, 00));
+     //  my_Jirama.Retablir(R2,new Date(13, 3, 2025, 14, 0, 00));
         
       
 
        my_Jirama.Couper(C3,new Date(13, 3, 2025, 17, 00, 0));  
-       my_Jirama.Retablir(R3,new Date(13, 3, 2025, 17, 15, 0));
+//       my_Jirama.Retablir(R3,new Date(13, 3, 2025, 17, 15, 0));
 
-   // my_Jirama.afficher_lc();
+      //  my_Jirama.afficher_lc();
         Stat st1=new Stat(s1,my_Jirama.get_lc());   
        Stat st2=new Stat(s2,my_Jirama.get_lc());
        Stat st3=new Stat(s3,my_Jirama.get_lc());
@@ -111,8 +111,17 @@ public class Main{
       st3.insert_into(LST);
 
 
-      st1.min_min(LST).afficher();
-      st1.min_max(LST).afficher();
-      st1.min_moyenne(LST).afficher();
+    
+      st1.afficher_min_stat(LST);
+       my_Jirama.afficher_lc();
+      /*-----------debug---------*/
+      Point[] test_insert_into=new Point [4];
+      (new Point(1,2)).insert_into(test_insert_into);
+       (new Point(0,2)).insert_into(test_insert_into);
+        (new Point(1,3)).insert_into(test_insert_into);
+        for(int i=0;test_insert_into[i]!=null;i++){
+            test_insert_into[i].afficher();
+        }
+       my_Jirama.get_pays().afficher(); 
  } 
 }

@@ -10,7 +10,7 @@ public class Maison{
     //impl --->#[constructor] {
     public Maison(String nom){
     this.qui_vive=new Personne[100];
-    this.position=new Point(0,0);
+ 
     this.is_coupe=false;
     this.nom=nom;
     }
@@ -68,5 +68,13 @@ public class Maison{
             ld[index]=this;
         }        
     // }
+    public boolean coupable(){
+        for(int i=0;this.get_qui_vive()[i]!=null;i++){
+            if(!this.get_qui_vive()[i].coupable()){
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
